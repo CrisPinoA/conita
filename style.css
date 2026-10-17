@@ -1,0 +1,31 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #0d0b14;
+}
+
+#screen {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: block;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
+/* Campo real para escribir: invisible, el texto se dibuja en el canvas. */
+#typer {
+  position: fixed;
+  left: -2000px;
+  top: 0;
+  width: 200px;
+  height: 40px;
+  opacity: 0;
+  resize: none;
+  border: 0;
+  padding: 0;
+  font-size: 16px;
+  caret-color: transparent;
+  pointer-events: none;
+}

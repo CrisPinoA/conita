@@ -1,0 +1,4 @@
+# configuración local del editor y del servidor de pruebas
+.claude/
+# el código del link no va al repo público
+backend/LINK.txt
