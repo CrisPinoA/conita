@@ -11,6 +11,7 @@ import { updateNpc, drawNpc } from './gfx/npc.js';
 import { updatePlane, drawPlane } from './gfx/plane.js';
 import { updateBubble, drawBubble } from './gfx/ui.js';
 import { updateHUD, drawHUD } from './gfx/hud.js';
+import { initSound, updateSound, drawSound } from './gfx/sound.js';
 import { statusReady, updateFlow, drawFlowWorld, drawFlowUI } from './flow.js';
 import { CONFIG } from './config.js';
 import { getStatus } from './api.js';
@@ -27,6 +28,7 @@ await loadFont('assets/font/minecraft-seven.ttf');
 loadSfx('levelup', 'assets/sfx/levelup.mp3', 0.8);
 loadSfx('achievement', 'assets/sfx/achievement.mp3', 0.9);
 setMusic(CONFIG.music, CONFIG.musicVolume, CONFIG.musicGap);
+initSound();
 // el navegador solo deja sonar audio tras un gesto: el primer clic o tecla en cualquier pantalla
 // (también en la final, al reabrir el link)
 window.addEventListener('pointerdown', unlockAudio, { once: true });
@@ -41,6 +43,7 @@ let lastCursor = -1;
 function update(dt) {
   pollInput();
   updateDisplay();
+  updateSound(); // antes que el resto: si el clic fue en el control, se consume aquí
   updateScene(dt);
   updatePlane(dt);
   updateNpc(dt);
@@ -64,6 +67,7 @@ function render() {
   drawFlowUI(ctx);
   drawBubble(ctx);
   drawHUD(ctx);
+  drawSound(ctx);
   present();
   if (input.cursor !== lastCursor) {
     lastCursor = input.cursor;
