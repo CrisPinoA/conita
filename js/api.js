@@ -2,7 +2,7 @@
 // Mientras BACKEND_URL esté vacío, todo se simula en localStorage para probar.
 import { getMock, setMock } from './store.js';
 
-export const BACKEND_URL = '';
+export const BACKEND_URL = 'https://script.google.com/macros/s/AKfycbz4WNQwsvLhDF3kXKbbZPEgRxTVMuRplmpAObDb1eJoTi4R7s0TtVPrZC-IjEotEeMb/exec';
 const token = new URLSearchParams(location.search).get('k') || '';
 
 async function call(action, payload = {}) {
